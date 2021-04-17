@@ -27,5 +27,8 @@
     "commitizen": {
       "path": "cz-conventional-changelog"
     }
+  },
+  "dependencies": {
+    "execa": "^4.1.0"
   }
 }
