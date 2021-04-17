@@ -1,0 +1,34 @@
+{
+  "name": "@jayjnu/create-cli",
+  "version": "0.0.0",
+  "description": "A CLI to create a new CLI",
+  "main": "lib/main.js",
+  "author": "jayjnu <doublejnu@gmail.com>",
+  "bin": {
+    "@jayjnu/create-cli": "bin/create-cli",
+    "create-cli": "bin/create-cli"
+  },
+  "scripts": {
+    "compile": "tsc"
+  },
+  "dependencies": {
+    "esm": "^3.2.25"
+  },
+  "license": "MIT",
+  "repository": {
+    "url": "git@github.com:jayjnu/create-cli.git"
+  },
+  "keywords": [
+    "cli",
+    "create-cli"
+  ],
+  "devDependencies": {
+    "cz-conventional-changelog": "^3.3.0",
+    "typescript": "^4.2.4"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  }
+}

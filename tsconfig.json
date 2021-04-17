@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "allowSyntheticDefaultImports": true,
+    "outDir": "lib",
+    "declaration": true
+  },
+  "include": ["./src/**/*"],
+  "exclude": ["node_modules"]
+}
