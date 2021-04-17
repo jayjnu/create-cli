@@ -47,7 +47,7 @@ export function fromArgvs(argvs: Argvs): PromptOptions {
   };
 }
 
-export function _filterQuestions(opts: PromptOptions) {
+function _filterQuestions(opts: PromptOptions) {
   const questions: Record<keyof Options, QuestionDescription> = {
     git: {
       test: (value?: boolean) => typeof value === 'undefined',
