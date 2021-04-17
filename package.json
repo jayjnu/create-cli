@@ -17,6 +17,9 @@
     "create-cli"
   ],
   "devDependencies": {
+    "@commitlint/cli": "^12.1.1",
+    "@commitlint/config-conventional": "^12.1.1",
+    "@commitlint/config-lerna-scopes": "^12.1.1",
     "cz-conventional-changelog": "^3.3.0",
     "jest": "^26.6.3",
     "lerna": "^3.21.0",
