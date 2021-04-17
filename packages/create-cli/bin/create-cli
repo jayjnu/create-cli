@@ -2,4 +2,4 @@
 
 require = require('esm')(module);
 
-require('../lib/main.js').cli(process.argv);
+require('../lib/main.esm.js').cli(process.argv);

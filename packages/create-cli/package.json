@@ -6,6 +6,8 @@
   "homepage": "https://github.com/jayjnu/create-cli#readme",
   "license": "MIT",
   "main": "lib/main.js",
+  "module": "lib/main.esm.js",
+  "types": "lib/main.d.ts",
   "bin": {
     "@jayjnu/create-cli": "bin/create-cli",
     "create-cli": "bin/create-cli"
@@ -22,7 +24,8 @@
     "url": "git+https://github.com/jayjnu/create-cli.git"
   },
   "scripts": {
-    "compile": "tsc"
+    "clean": "rimraf ./lib",
+    "compile": "npm run clean && rollup -c"
   },
   "bugs": {
     "url": "https://github.com/jayjnu/create-cli/issues"
@@ -33,10 +36,17 @@
     "inquirer": "^6.5.2"
   },
   "devDependencies": {
+    "@babel/core": "^7.13.15",
     "@babel/preset-env": "^7.13.15",
     "@babel/preset-typescript": "^7.13.0",
+    "@rollup/plugin-babel": "^5.3.0",
+    "@rollup/plugin-commonjs": "^18.0.0",
+    "@rollup/plugin-node-resolve": "^11.2.1",
     "@types/jest": "^26.0.22",
     "babel-jest": "^26.6.3",
-    "jest": "^26.6.3"
+    "jest": "^26.6.3",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.45.2",
+    "rollup-plugin-typescript2": "^0.30.0"
   }
 }
