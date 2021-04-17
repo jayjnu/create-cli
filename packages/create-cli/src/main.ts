@@ -1,7 +1,7 @@
-import { parse } from './argvs';
+import {prompt} from './argvs';
 
-export const cli = (argv: string[]) => {
-  const opts = parse(argv).opts();
-
+export async function cli(argv: string[]) {
+  const opts = await prompt(argv);
+  
   console.log(opts);
 };

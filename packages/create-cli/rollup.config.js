@@ -4,6 +4,7 @@ import babel from '@rollup/plugin-babel';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import typescript from 'rollup-plugin-typescript2';
+import json from '@rollup/plugin-json';
 
 const pkg = require('./package.json');
 
@@ -17,7 +18,10 @@ export default {
     }
   ],
   plugins: [
-    resolve(),
+    resolve({
+      preferBuiltins: true
+    }),
+    json(),
     babel({
       extensions: [
         ...DEFAULT_EXTENSIONS,
