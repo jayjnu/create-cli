@@ -1,7 +1,11 @@
 {
-  "name": "{{projectName}}",
+  "name": "create-project",
+  "module": "lib/main.js",
+  "scripts": {
+    "build": "tsc -p tsconfig.json"
+  },
   "bin": {
-    "{{projectName}}": "bin/cli"
+    "create-project": "bin/cli"
   },
   "dependencies": {
     "commander": "^7.2.0",
