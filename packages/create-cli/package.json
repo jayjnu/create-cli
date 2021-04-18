@@ -16,7 +16,8 @@
     "create-cli": "bin/create-cli"
   },
   "files": [
-    "lib"
+    "lib",
+    "templates"
   ],
   "repository": {
     "type": "git",
