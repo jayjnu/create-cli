@@ -8,6 +8,9 @@
   "main": "lib/main.js",
   "module": "lib/main.esm.js",
   "types": "lib/main.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
   "bin": {
     "@jayjnu/create-cli": "bin/create-cli",
     "create-cli": "bin/create-cli"
@@ -53,5 +56,6 @@
     "commitizen": {
       "path": "cz-conventional-changelog"
     }
-  }
+  },
+  "gitHead": "65b9e0065222a51c71e691eb37e2ec9efe84e201"
 }
