@@ -35,16 +35,14 @@ describe('prompt generation', () => {
   });
 
   it.each([
-    [['--git'], {lang: 'typescript'}]
+    [['--git'], {git: true, lang: 'typescript'}],
+    [['-i'], {install: true, git: true}]
   ])('should return merged result of initial flag + prompt', async (init, answer) => {
     await mockPrompt.mockResolvedValueOnce(answer);
 
     const cmd = command(...init);
     const opts = await prompt(cmd);
 
-    expect(opts).toEqual({
-      git: true,
-      ...answer
-    });
+    expect(opts).toEqual(answer);
   });
 });

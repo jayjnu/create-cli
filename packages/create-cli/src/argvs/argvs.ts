@@ -1,14 +1,11 @@
 import {Command} from 'commander';
-import inquirer, {Question} from 'inquirer';
+import inquirer, {Answers} from 'inquirer';
+import {questions} from './questions';
 import type {Argvs, PromptOptions, Options} from './interfaces';
 
-interface QuestionDescription<T = unknown> {
-  test: (value: T) => boolean;
-  question: Question;
-}
-
 export const defaultOptions = Object.freeze({
-  git: true
+  git: true,
+  install: true
 });
 
 export async function prompt(argvs: string[]): Promise<Options> {
@@ -19,24 +16,24 @@ export async function prompt(argvs: string[]): Promise<Options> {
     return defaultOptions;
   }
 
-  const questions: Question[] = _filterQuestions(promptOpts);
-  const answers: Options = await inquirer.prompt(questions);
+  console.log('initialAnswers', promptOpts.argvs);
 
-  return {
-    ...promptOpts.argvs,
-    ...answers
-  };
+  const answers = await inquirer.prompt<Options>(questions, promptOpts.argvs);
+
+  console.log(answers);
+  
+  return answers;
 }
 
 export function parse(argvs: string[]): Argvs {
   const program = new Command();
 
   program.option('-y, --yes', 'create with default config', false)
-        .option('-gt, --git', 'initialize git project');
+        .option('-gt, --git', 'initialize git project')
+        .option('-i, --install', 'install npm packages');
 
   return program.parse(argvs).opts() as Argvs;
 }
-
 
 export function fromArgvs(argvs: Argvs): PromptOptions {
   const {yes, ...opts} = argvs;
@@ -45,22 +42,4 @@ export function fromArgvs(argvs: Argvs): PromptOptions {
     skipPrompt: argvs.yes,
     argvs: opts
   };
-}
-
-function _filterQuestions(opts: PromptOptions) {
-  const questions: Record<keyof Options, QuestionDescription> = {
-    git: {
-      test: (value?: boolean) => typeof value === 'undefined',
-      question: {
-        type: 'confirm',
-        name: 'git',
-        message: 'Initialize a git repository?',
-        default: true
-      }
-    }
-  };
-
-  return Object.entries<QuestionDescription>(questions)
-    .filter(([name, {test}]) => test(opts[name]))
-    .map(([, {question}]) => question);
 }
