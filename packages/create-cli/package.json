@@ -32,7 +32,8 @@
     "commander": "^7.2.0",
     "esm": "^3.2.25",
     "execa": "^5.0.0",
-    "inquirer": "8"
+    "inquirer": "8",
+    "ncp": "^2.0.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.13.14",
