@@ -3,20 +3,25 @@ import {defaultOptions, Options} from './options';
 
 export const questions = [
   {
+    type: 'input',
+    name: 'dir',
+    message: 'Choose directory to bootstrap project',
+    default: process.cwd(),
+  },
+  {
     type: 'confirm',
     name: 'git',
     message: 'Initialize a git repository?',
-    default: false,
-    when(answers: Options) {
-      return typeof answers.git === 'undefined';
-    }
+    default: false
   },
   {
     type: 'input',
     name: 'projectName',
     message: 'Project name?',
     validate(input: string) {
-      return typeof input !== 'undefined' && input.length > 0;
+      return typeof input !== 'undefined' && 
+        input.length > 0 && 
+        input.startsWith('create-');
     }
   },
   {

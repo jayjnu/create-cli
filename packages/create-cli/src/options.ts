@@ -6,6 +6,7 @@ export interface Options {
   install: boolean;
   projectName: string;
   lang: string;
+  dir: string;
 }
 
 export const defaultOptions = Object.freeze({
@@ -13,7 +14,8 @@ export const defaultOptions = Object.freeze({
   git: true,
   install: true,
   lang: 'typescript',
-  projectName: 'create-project'
+  projectName: 'create-project',
+  dir: process.cwd()
 });
 
 export function createOptions(argvs: string[]): Options {
@@ -22,7 +24,8 @@ export function createOptions(argvs: string[]): Options {
   program.option('-y, --yes', 'create with default config', false)
         .option('-gt, --git', 'initialize git project')
         .option('-i, --install', 'install npm packages')
-        .option('-p, --project', 'project name');
+        .option('-p, --projectName', 'project name')
+        .option('-d, --dir', 'working directory', defaultOptions.dir);
 
   return program.parse(argvs).opts() as Options;
 }
