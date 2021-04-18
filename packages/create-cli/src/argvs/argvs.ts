@@ -1,11 +1,13 @@
 import {Command} from 'commander';
-import inquirer, {Answers} from 'inquirer';
+import inquirer from 'inquirer';
 import {questions} from './questions';
 import type {Argvs, PromptOptions, Options} from './interfaces';
 
 export const defaultOptions = Object.freeze({
   git: true,
-  install: true
+  install: true,
+  lang: 'typescript',
+  projectName: 'create-project'
 });
 
 export async function prompt(argvs: string[]): Promise<Options> {
@@ -30,7 +32,8 @@ export function parse(argvs: string[]): Argvs {
 
   program.option('-y, --yes', 'create with default config', false)
         .option('-gt, --git', 'initialize git project')
-        .option('-i, --install', 'install npm packages');
+        .option('-i, --install', 'install npm packages')
+        .option('-p, --project', 'project name');
 
   return program.parse(argvs).opts() as Argvs;
 }

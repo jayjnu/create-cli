@@ -1,14 +1,33 @@
-import { Question } from 'inquirer';
+import type {Options} from './interfaces';
 
-export const questions: Question[] = [
+export const questions = [
   {
     type: 'confirm',
     name: 'git',
     message: 'Initialize a git repository?',
     default: false,
-    when(answers) {
-      console.log('when: git answer', answers);
+    when(answers: Options) {
       return typeof answers.git === 'undefined';
+    }
+  },
+  {
+    type: 'input',
+    name: 'projectName',
+    message: 'Project name?',
+    validate(input: string) {
+      return typeof input !== 'undefined' && input.length > 0;
+    }
+  },
+  {
+    type: 'list',
+    name: 'lang',
+    message: 'Choose main project language',
+    choices: [
+      'Typescript', 
+      'Javascript'
+    ],
+    filter(answer: string) {
+      return answer.toLowerCase();
     }
   },
   {
@@ -16,16 +35,5 @@ export const questions: Question[] = [
     name: 'install',
     message: 'Install dependencies?',
     default: true
-  },
-  {
-    type: 'input',
-    name: 'projectName',
-    message: 'Project name?',
-    when(answers) {
-      return answers.install;
-    },
-    validate(input) {
-      return typeof input !== 'undefined';
-    }
   }
 ];

@@ -1,6 +1,8 @@
 export interface Options {
   git: boolean;
   install: boolean;
+  projectName: string;
+  lang: string;
 }
 
 export type Argvs = Partial<Options> & {

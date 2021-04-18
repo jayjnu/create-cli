@@ -3,6 +3,7 @@ import Listr from 'listr';
 
 export async function cli(argv: string[] = process.argv) {
   const opts = await prompt(argv);
+
   const tasks = new Listr([
     {
       title: 'Git - initialize git project...',
@@ -13,15 +14,26 @@ export async function cli(argv: string[] = process.argv) {
       }
     },
     {
-      title: 'NPM - install dependencies',
+      title: 'Template - Generating Scaffolds',
       task: () => {
-        return new Promise((res) => {
-          setTimeout(res, 5000);
-        })
+        return new Listr([
+          {
+            title: `creating ${opts.lang} templates..`,
+            task: async() => {
+              return 'Good';
+            }
+          },
+          {
+            title: `building package.json...`,
+            task: async() => {
+              return 'Good';
+            }
+          }
+        ])
       }
     },
     {
-      title: 'Template - Generating Scaffolds',
+      title: 'NPM - install dependencies',
       task: () => {
         return new Promise((res) => {
           setTimeout(res, 5000);
