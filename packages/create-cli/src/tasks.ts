@@ -53,7 +53,20 @@ export function createTasks(options: Options): Listr {
     {
       title: 'NPM - install dependencies',
       task: () => {
-        return execa('npm', ['install', '--prefix', options.dir]);
+        return new Listr([
+          {
+            title: 'install npm packages',
+            task: async () => {
+              return execa('npm', ['install', '--prefix', options.dir]);
+            }
+          },
+          {
+            title: 'build project',
+            task: async () => {
+              return execa('npm', ['run', 'build', '--prefix', options.dir]);
+            }
+          }
+        ]);
       },
       skip: () => !options.install
     }
