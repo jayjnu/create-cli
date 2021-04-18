@@ -1,6 +1,6 @@
 {
   "name": "@jayjnu/create-cli",
-  "version": "0.2.1-alpha.1",
+  "version": "0.3.0-alpha.0",
   "description": "A CLI to create a new CLI",
   "author": "jayjnu <doublejnu@gmail.com>",
   "homepage": "https://github.com/jayjnu/create-cli#readme",
