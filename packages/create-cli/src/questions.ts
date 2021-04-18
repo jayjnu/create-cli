@@ -1,4 +1,5 @@
-import type {Options} from './interfaces';
+import {prompt} from 'inquirer';
+import {defaultOptions, Options} from './options';
 
 export const questions = [
   {
@@ -23,8 +24,7 @@ export const questions = [
     name: 'lang',
     message: 'Choose main project language',
     choices: [
-      'Typescript', 
-      'Javascript'
+      'Typescript'
     ],
     filter(answer: string) {
       return answer.toLowerCase();
@@ -37,3 +37,11 @@ export const questions = [
     default: true
   }
 ];
+
+export async function openPrompt(options: Partial<Options>) {
+  if (options.yes) {
+    return defaultOptions;
+  }
+  // pass options retrieved from cli arguments to skip prompt from printing already answered questions
+  return await prompt<Options>(questions, options);
+}
