@@ -4,7 +4,6 @@
     "outDir": "./lib",
     "rootDir": "./src",
     "types": ["node"],
-    "emitDeclarationOnly": true
   },
   "exclude": [
     "**/*.spec.js",

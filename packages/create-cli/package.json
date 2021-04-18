@@ -21,9 +21,8 @@
   },
   "scripts": {
     "clean": "rimraf ./lib",
-    "precompile": "npm run clean && npm run generate-type",
-    "compile": "babel src --out-dir lib --extensions '.ts,.js' --ignore '**/*.spec.ts'",
-    "generate-type": "tsc -p ./tsconfig.lib.json",
+    "precompile": "npm run clean",
+    "compile": "tsc -p tsconfig.lib.json",
     "test": "jest"
   },
   "bugs": {
