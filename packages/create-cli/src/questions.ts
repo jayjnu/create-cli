@@ -1,5 +1,7 @@
+import {resolve} from 'path';
 import {prompt} from 'inquirer';
 import {defaultOptions, Options} from './options';
+
 
 export const questions = [
   {
@@ -7,6 +9,9 @@ export const questions = [
     name: 'dir',
     message: 'Choose directory to bootstrap project',
     default: process.cwd(),
+    filter(input: string) {
+      return resolve(process.cwd(), input);
+    }
   },
   {
     type: 'confirm',
