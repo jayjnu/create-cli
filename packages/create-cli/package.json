@@ -26,7 +26,8 @@
     "clean": "rimraf ./lib",
     "precompile": "npm run clean",
     "compile": "tsc -p tsconfig.lib.json",
-    "test": "jest"
+    "test": "jest",
+    "prepublishOnly": "npm run compile"
   },
   "bugs": {
     "url": "https://github.com/jayjnu/create-cli/issues"
