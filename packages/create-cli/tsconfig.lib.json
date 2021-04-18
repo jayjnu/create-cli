@@ -3,7 +3,8 @@
   "compilerOptions": {
     "outDir": "./lib",
     "rootDir": "./src",
-    "types": ["node"]
+    "types": ["node"],
+    "emitDeclarationOnly": true
   },
   "exclude": [
     "**/*.spec.js",

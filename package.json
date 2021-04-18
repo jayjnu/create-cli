@@ -21,6 +21,7 @@
     "@commitlint/cli": "^12.1.1",
     "@commitlint/config-conventional": "^12.1.1",
     "@commitlint/config-lerna-scopes": "^12.1.1",
+    "@types/listr": "^0.14.2",
     "cz-conventional-changelog": "^3.3.0",
     "husky": "^6.0.0",
     "jest": "^26.6.3",
